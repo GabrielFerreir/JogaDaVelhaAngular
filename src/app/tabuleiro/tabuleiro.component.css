@@ -9,3 +9,10 @@ article {
 article:hover {
   background-color: #EEEEEE; cursor: pointer;
 }
+
+.ativo {
+  color: #F00;
+}
+.bloqueiaClick {
+  pointer-events: none;
+}
