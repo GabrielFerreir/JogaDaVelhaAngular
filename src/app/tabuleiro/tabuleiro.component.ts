@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 
 import {ElementRef,Renderer2, ViewChild} from '@angular/core';
 
+import { TabuleiroService } from './tabuleiro.service';
+
 @Component({
   selector: 'app-tabuleiro',
   templateUrl: './tabuleiro.component.html',
   styleUrls: ['./tabuleiro.component.css']
 })
 export class TabuleiroComponent implements OnInit {
+  teste = ['1',  '2', '3' , '4']
 
 @ViewChild('tabuleiro') tabuleiro: ElementRef;
 
@@ -23,7 +26,10 @@ export class TabuleiroComponent implements OnInit {
   @ViewChild('IC8') cC8: ElementRef;
   @ViewChild('IC9') cC9: ElementRef;
 
+
+
 NumeroDeJogadas: number = 0;
+
 txtC1: string = '';
 txtC2: string = '';
 txtC3: string = '';
@@ -37,68 +43,162 @@ txtC8: string = '';
 txtC9: string = '';
 
   C1(){
-    this.txtC1 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC1 == '') {
+      this.txtC1 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
   }
   C2(){
-    this.txtC2 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC2 == '') {
+      this.txtC2 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
   }
   C3(){
-    this.txtC3 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC3 == '') {
+      this.txtC3 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
   }
   C4(){
-    this.txtC4 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC4 == ''){
+      this.txtC4 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
   }
   C5(){
-    this.txtC5 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC5 == '') {
+      this.txtC5 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
   }
   C6(){
-    this.txtC6 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC6 == ''){
+      this.txtC6 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
+
   }
   C7(){
-    this.txtC7 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC7 == '') {
+      this.txtC7 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
   }
   C8(){
-    this.txtC8 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC8 == '') {
+      this.txtC8 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
   }
   C9(){
-    this.txtC9 = this.verificaJogador();
-    console.log(this.NumeroDeJogadas);
-    this.NumeroDeJogadas++;
-    this.verificaVencedor();
+    if(this.txtC9 == '') {
+      this.txtC9 = this.verificaJogador();
+      this.setMensagem();
+      this.corDoCampo();
+      console.log(this.NumeroDeJogadas);
+      this.NumeroDeJogadas++;
+      this.verificaVencedor();
+    }
   }
 
 
   verificaJogador(){
     if(this.NumeroDeJogadas % 2 == 0){
+      this.dado.EAVezDoJogador1 = true;
       return "X"
     } else if(this.NumeroDeJogadas % 2 == 1){
+      this.dado.EAVezDoJogador1 = false;
       return "O"
     }
   }
+  setMensagem(){
+    if(this.dado.EAVezDoJogador1) {
+      this.dado.mensagem = "È a vez de X";
+    } else {
+      this.dado.mensagem = "È a vez de O";
+    }
+  }
+  corDoCampo(){
+    if(this.txtC1 == 'X') {
+      this.cC1.nativeElement.className = "ativoX";
+    } else if(this.txtC1 == 'O'){
+      this.cC1.nativeElement.className = "ativoO ";
+    }
+    if(this.txtC2 == 'X'){
+      this.cC2.nativeElement.className = "ativoX ";
+    } else if(this.txtC2 == 'O'){
+      this.cC2.nativeElement.className = "ativoO ";
+    }
+    if(this.txtC3 == 'X'){
+      this.cC3.nativeElement.className = "ativoX ";
+    } else if(this.txtC3 == 'O'){
+      this.cC3.nativeElement.className = "ativoO ";
+    }
+    if(this.txtC4 == 'X'){
+      this.cC4.nativeElement.className = "ativoX ";
+    } else if(this.txtC4 == 'O'){
+      this.cC4.nativeElement.className = "ativoO ";
+    }
+    if(this.txtC5 == 'X'){
+      this.cC5.nativeElement.className = "ativoX ";
+    } else if(this.txtC5 == 'O'){
+      this.cC5.nativeElement.className = "ativoO ";
+    }
+    if(this.txtC6 == 'X'){
+      this.cC6.nativeElement.className = "ativoX ";
+    } else if(this.txtC6 == 'O'){
+      this.cC6.nativeElement.className = "ativoO ";
+    }
+    if(this.txtC7 == 'X'){
+      this.cC7.nativeElement.className = "ativoX ";
+    } else if(this.txtC7 == 'O'){
+      this.cC7.nativeElement.className = "ativoO ";
+    }
+    if(this.txtC8 == 'X'){
+      this.cC8.nativeElement.className = "ativoX ";
+    } else if(this.txtC8 == 'O'){
+      this.cC8.nativeElement.className = "ativoO ";
+    }
+    if(this.txtC9 == 'X'){
+      this.cC9.nativeElement.className = "ativoX ";
+    } else if(this.txtC9 == 'O'){
+      this.cC9.nativeElement.className = "ativoO ";
+    }
+  }
+
   verificaVencedor(){
 
         if(this.txtC1 == "X" && this.txtC2 == "X" && this.txtC3 == "X" || this.txtC1 == "O" && this.txtC2 == "O" && this.txtC3 == "O"){
@@ -108,8 +208,10 @@ txtC9: string = '';
           this.cC3.nativeElement.className = "ativo";
           if(this.txtC1 == "X") {
             console.log("Fim de Jogo | X venceu");
+            this.somaVitoriaX();
           } else if(this.txtC1 == "O"){
             console.log("Fim de Jogo | O venceu");
+            this.somaVitoriaO();
           }
          this.reset();
        }
@@ -121,8 +223,10 @@ txtC9: string = '';
          this.cC6.nativeElement.className = "ativo";
          if(this.txtC4 == "X") {
            console.log("Fim de Jogo | X venceu");
+           this.somaVitoriaX();
          } else if(this.txtC4 == "O"){
            console.log("Fim de Jogo | O venceu");
+           this.somaVitoriaO();
          }
         this.reset();
       }
@@ -134,8 +238,10 @@ txtC9: string = '';
         this.cC9.nativeElement.className = "ativo";
         if(this.txtC7 == "X") {
           console.log("Fim de Jogo | X venceu");
+          this.somaVitoriaX();
         } else if(this.txtC7 == "O"){
           console.log("Fim de Jogo | O venceu");
+          this.somaVitoriaO();
         }
        this.reset();
      }
@@ -147,8 +253,10 @@ txtC9: string = '';
          this.cC7.nativeElement.className = "ativo";
          if(this.txtC1 == "X") {
            console.log("Fim de Jogo | X venceu");
+           this.somaVitoriaX();
          } else if(this.txtC1 == "O"){
            console.log("Fim de Jogo | O venceu");
+           this.somaVitoriaO();
          }
        this.reset();
       }
@@ -160,8 +268,10 @@ txtC9: string = '';
         this.cC8.nativeElement.className = "ativo";
         if(this.txtC2 == "X") {
           console.log("Fim de Jogo | X venceu");
+          this.somaVitoriaX();
         } else if(this.txtC2 == "O"){
           console.log("Fim de Jogo | O venceu");
+          this.somaVitoriaO();
         }
       this.reset();
       }
@@ -173,8 +283,10 @@ txtC9: string = '';
         this.cC9.nativeElement.className = "ativo";
         if(this.txtC3 == "X") {
           console.log("Fim de Jogo | X venceu");
+          this.somaVitoriaX();
         } else if(this.txtC3 == "O"){
           console.log("Fim de Jogo | O venceu");
+          this.somaVitoriaO();
         }
       this.reset();
       }
@@ -186,8 +298,10 @@ txtC9: string = '';
         this.cC9.nativeElement.className = "ativo";
         if(this.txtC1 == "X") {
           console.log("Fim de Jogo | X venceu");
+          this.somaVitoriaX();
         } else if(this.txtC1 == "O"){
           console.log("Fim de Jogo | O venceu");
+          this.somaVitoriaO();
         }
       this.reset();
       }
@@ -199,16 +313,28 @@ txtC9: string = '';
         this.cC7.nativeElement.className = "ativo";
         if(this.txtC3 == "X") {
           console.log("Fim de Jogo | X venceu");
+          this.somaVitoriaX();
         } else if(this.txtC3 == "O"){
           console.log("Fim de Jogo | O venceu");
+          this.somaVitoriaO();
         }
       this.reset();
-      }}
+      }
+      else if(this.NumeroDeJogadas > 8) {
+        this.tabuleiro.nativeElement.className = "bloqueiaClick";
+        console.log("Fim de Jogo | Deu Velha");
+        this.reset();
+      }
+    }
+    somaVitoriaX(){
+       this.dado.vitoriasJogador1++;
+    }
+    somaVitoriaO(){
+       this.dado.vitoriasJogador2++;
+    }
+
 
   reset(){
-
-
-
     setTimeout(() => this.txtC1 = '', 2000);
     setTimeout(() => this.txtC2 = '', 2000);
     setTimeout(() => this.txtC3 = '', 2000);
@@ -235,10 +361,12 @@ txtC9: string = '';
 
 
     this.NumeroDeJogadas = 0;
+    console.log('Jogador 1: ' + this.dado.vitoriasJogador1);
+    console.log('Jogador 2: ' + this.dado.vitoriasJogador2);
   }
 
-  constructor() {
-
+  constructor(private dado: TabuleiroService) {
+          this.setMensagem();
   }
 
   ngOnInit() {

@@ -1,32 +1,36 @@
-<section #tabuleiro>
-    <!--Linha 1-->
-  <article #IC1 (click)="C1()">
-    {{ txtC1 }}
-  </article>
-  <article #IC2 (click)="C2()">
-    {{ txtC2 }}
-  </article>
-  <article #IC3 (click)="C3()">
-    {{ txtC3 }}
-  </article>
-  <!--Linha 2-->
-  <article #IC4 (click)="C4()">
-    {{ txtC4 }}
-  </article>
-  <article #IC5 (click)="C5()">
-    {{ txtC5 }}
-  </article>
-  <article #IC6 (click)="C6()">
-    {{ txtC6 }}
-  </article>
-  <!--Linha 3-->
-  <article #IC7 (click)="C7()">
-    {{ txtC7 }}
-  </article>
-  <article #IC8 (click)="C8()">
-    {{ txtC8 }}
-  </article>
-  <article #IC9 (click)="C9()">
-    {{ txtC9 }}
-  </article>
-</section>
+<div id="container">
+  <section #tabuleiro>
+      <!--Linha 1-->
+
+    <article #IC1 (click)="C1()">
+      {{ txtC1 }}
+    </article>
+    <article #IC2 (click)="C2()">
+      {{ txtC2 }}
+    </article>
+    <article #IC3 (click)="C3()">
+      {{ txtC3 }}
+    </article>
+    <!--Linha 2-->
+    <article #IC4 (click)="C4()">
+      {{ txtC4 }}
+    </article>
+    <article #IC5 (click)="C5()">
+      {{ txtC5 }}
+    </article>
+    <article #IC6 (click)="C6()">
+      {{ txtC6 }}
+    </article>
+    <!--Linha 3-->
+    <article #IC7 (click)="C7()">
+      {{ txtC7 }}
+    </article>
+    <article #IC8 (click)="C8()">
+      {{ txtC8 }}
+    </article>
+    <article #IC9 (click)="C9()">
+      {{ txtC9 }}
+    </article>
+  </section>
+  <button class="btn reiniciar">Reiniciar Jogo</button>
+</div>

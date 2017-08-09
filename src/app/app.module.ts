@@ -2,15 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TabuleiroComponent } from './tabuleiro/tabuleiro.component';
+import { PlacarComponent } from './placar/placar.component';
+import { TabuleiroModule } from './tabuleiro/tabuleiro.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TabuleiroComponent
+    PlacarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    TabuleiroModule
   ],
   providers: [],
   bootstrap: [AppComponent]
