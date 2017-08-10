@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {ElementRef,Renderer2, ViewChild} from '@angular/core';
 
 import { TabuleiroService } from './tabuleiro.service';
+import { PlacarService } from './../placar/placar.service';
 
 @Component({
   selector: 'app-tabuleiro',
@@ -10,9 +11,9 @@ import { TabuleiroService } from './tabuleiro.service';
   styleUrls: ['./tabuleiro.component.css']
 })
 export class TabuleiroComponent implements OnInit {
-  teste = ['1',  '2', '3' , '4']
 
 @ViewChild('tabuleiro') tabuleiro: ElementRef;
+
 
   @ViewChild('IC1') cC1: ElementRef;
   @ViewChild('IC2') cC2: ElementRef;
@@ -25,6 +26,8 @@ export class TabuleiroComponent implements OnInit {
   @ViewChild('IC7') cC7: ElementRef;
   @ViewChild('IC8') cC8: ElementRef;
   @ViewChild('IC9') cC9: ElementRef;
+
+
 
 
 
@@ -45,92 +48,100 @@ txtC9: string = '';
   C1(){
     if(this.txtC1 == '') {
       this.txtC1 = this.verificaJogador();
-      this.setMensagem();
+
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
     }
   }
   C2(){
     if(this.txtC2 == '') {
       this.txtC2 = this.verificaJogador();
-      this.setMensagem();
+
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
     }
   }
   C3(){
     if(this.txtC3 == '') {
       this.txtC3 = this.verificaJogador();
-      this.setMensagem();
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
     }
   }
   C4(){
     if(this.txtC4 == ''){
       this.txtC4 = this.verificaJogador();
-      this.setMensagem();
+
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
     }
   }
   C5(){
     if(this.txtC5 == '') {
       this.txtC5 = this.verificaJogador();
-      this.setMensagem();
+
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
     }
   }
   C6(){
     if(this.txtC6 == ''){
       this.txtC6 = this.verificaJogador();
-      this.setMensagem();
+
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
     }
 
   }
   C7(){
     if(this.txtC7 == '') {
       this.txtC7 = this.verificaJogador();
-      this.setMensagem();
+
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
     }
   }
   C8(){
     if(this.txtC8 == '') {
       this.txtC8 = this.verificaJogador();
-      this.setMensagem();
+
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
     }
   }
   C9(){
     if(this.txtC9 == '') {
       this.txtC9 = this.verificaJogador();
-      this.setMensagem();
       this.corDoCampo();
       console.log(this.NumeroDeJogadas);
       this.NumeroDeJogadas++;
       this.verificaVencedor();
+      this.setMensagem();
+
     }
   }
 
@@ -145,10 +156,12 @@ txtC9: string = '';
     }
   }
   setMensagem(){
-    if(this.dado.EAVezDoJogador1) {
+    if(!this.dado.EAVezDoJogador1) {
       this.dado.mensagem = "È a vez de X";
+      this.dado2.VezBorda();
     } else {
       this.dado.mensagem = "È a vez de O";
+      this.dado2.VezBorda();
     }
   }
   corDoCampo(){
@@ -333,6 +346,10 @@ txtC9: string = '';
        this.dado.vitoriasJogador2++;
     }
 
+resetVitorias(){
+  this.dado.vitoriasJogador1 = 0;
+  this.dado.vitoriasJogador2 = 0;
+}
 
   reset(){
     setTimeout(() => this.txtC1 = '', 2000);
@@ -358,18 +375,48 @@ txtC9: string = '';
     setTimeout(() => this.cC8.nativeElement.className = "", 2500);
     setTimeout(() => this.cC9.nativeElement.className = "", 2500);
 
-
-
     this.NumeroDeJogadas = 0;
+    this.dado.EAVezDoJogador1 = false;
     console.log('Jogador 1: ' + this.dado.vitoriasJogador1);
     console.log('Jogador 2: ' + this.dado.vitoriasJogador2);
   }
 
-  constructor(private dado: TabuleiroService) {
-          this.setMensagem();
+  reiniciarJogo(){
+    setTimeout(() => this.txtC1 = '', 2000);
+    setTimeout(() => this.txtC2 = '', 2000);
+    setTimeout(() => this.txtC3 = '', 2000);
+
+    setTimeout(() => this.txtC4 = '', 2000);
+    setTimeout(() => this.txtC5 = '', 2000);
+    setTimeout(() => this.txtC6 = '', 2000);
+
+    setTimeout(() => this.txtC7 = '', 2000);
+    setTimeout(() => this.txtC8 = '', 2000);
+    setTimeout(() => this.txtC9 = '', 2000);
+
+    setTimeout(() => this.tabuleiro.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC1.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC2.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC3.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC4.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC5.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC6.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC7.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC8.nativeElement.className = "", 2500);
+    setTimeout(() => this.cC9.nativeElement.className = "", 2500);
+
+    this.NumeroDeJogadas = 0;
+    this.dado.EAVezDoJogador1 = false;
+    this.resetVitorias();
+  }
+
+  constructor(private dado: TabuleiroService, private dado2: PlacarService) {
+
   }
 
   ngOnInit() {
+    this.setMensagem();
+    this.dado2.VezBorda();
   }
 
 }

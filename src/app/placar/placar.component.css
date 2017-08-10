@@ -44,4 +44,7 @@ section {
   width: 10%;
   float: right;
 }
+.borderAtive {
+  border-bottom:2px solid #26A69A;
+}
 /*Campo de texto */

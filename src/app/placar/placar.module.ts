@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PlacarComponent } from './placar.component';
+import { PlacarService } from './placar.service';
+import { TabuleiroService } from './../tabuleiro/tabuleiro.service';
 
 @NgModule({
   imports: [
@@ -9,6 +11,6 @@ import { PlacarComponent } from './placar.component';
   ],
   declarations: [PlacarComponent],
   exports: [PlacarComponent],
-  providers: []
+  providers: [ PlacarService, TabuleiroService ]
 })
 export class PlacarModule { }
